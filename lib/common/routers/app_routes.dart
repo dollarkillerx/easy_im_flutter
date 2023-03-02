@@ -1,6 +1,8 @@
 class AppRoutes {
   static const String Home = '/home';
   static const String Welcome = '/weclome';
+  static const String Sing = '/sing';
+  static const String SingOTP = '/otp';
 
   static const String NotFound = '/unknown';
 

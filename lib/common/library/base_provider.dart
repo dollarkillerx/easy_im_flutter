@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:easy_im/models/g_response.dart';
 import 'package:get/get.dart';
 import '../routers/app_routes.dart';
 import 'graph_ql_client.dart';
+import 'package:crypto/crypto.dart';
 
 const SERVER_API_URL = "http://127.0.0.1:8083/graphql";
 
@@ -15,6 +18,11 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
     // 请求拦截
     httpClient.addRequestModifier<void>((request) async {
       request.headers['Authorization'] = 'Bearer myToken';
+      String skey = "s" + "a" + "l" + "t";
+      request.headers[skey] = md5
+          .convert(utf8.encode(
+              '${DateTime.now().millisecondsSinceEpoch ~/ 10000}-9776e538-59ba-473f-8ccf-1d72031e360f1'))
+          .toString();
 
       return request;
     });

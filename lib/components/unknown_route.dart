@@ -7,14 +7,31 @@ class UnknownRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Text("Unknown Route 404"),
-            ElevatedButton(onPressed: () {
-              Get.back();
-            }, child: Text("Return"))
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Unknown Route 404",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Text(
+                    "Return",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                    ),
+                  ))
+            ],
+          ),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:easy_im/common/routers/app_routes.dart';
 import 'package:easy_im/pages/welcome/widgets/page_one.dart';
 import 'package:easy_im/pages/welcome/widgets/page_two.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,7 @@ class WelcomePage extends GetView<WelcomeController> {
         body: PageView(
           controller: controller.tabController,
           onPageChanged: (index) {
-            // controller.currentIndex = index;
-            controller.tp();
+            controller.currentIndex = index;
           },
           children: [
             GestureDetector(
@@ -42,7 +42,9 @@ class WelcomePage extends GetView<WelcomeController> {
             ),
             PageTwo(
               onTap: () {
-                controller.turnPage(3);
+                Get.toNamed(AppRoutes.Sing, arguments: {
+                  'sign_up': false,
+                });
               },
               img: 'assets/images/Illustration3.png',
               title: "Get notified when someone chat you",
