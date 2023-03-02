@@ -12,7 +12,8 @@ class WelcomePage extends GetView<WelcomeController> {
         body: PageView(
           controller: controller.tabController,
           onPageChanged: (index) {
-            controller.currentIndex = index;
+            // controller.currentIndex = index;
+            controller.tp();
           },
           children: [
             GestureDetector(
