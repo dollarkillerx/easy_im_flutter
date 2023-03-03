@@ -47,5 +47,12 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+    </dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Get pictures and take pictures with the camera roll to upload dynamic picture. </string>
 </dict>
 </plist>

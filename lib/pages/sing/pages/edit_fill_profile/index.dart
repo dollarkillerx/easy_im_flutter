@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,32 +36,46 @@ class SingEditFillProfilePage
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    Container(
-                      child: Stack(
-                        children: [
-                          Container(
-                            child: Image.asset(
-                              'assets/images/164102.png',
-                              fit: BoxFit.fill,
+                    GestureDetector(
+                      child: Container(
+                        child: Stack(
+                          children: [
+                            Container(
+                              child: Obx(() {
+                                if (controller.imgPath.value != "") {
+                                  return Image.file(
+                                    File(controller.imgPath.value),
+                                    fit: BoxFit.cover,
+                                  );
+                                } else {
+                                  return Image.asset(
+                                    'assets/images/164102.png',
+                                    fit: BoxFit.fill,
+                                  );
+                                }
+                              }),
+                              width: 200,
+                              height: 200,
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
                             ),
-                            width: 200,
-                            height: 200,
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: Container(
-                              child:
-                                  Image.asset('assets/images/EditSquare.png'),
-                            ),
-                          )
-                        ],
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Container(
+                                child:
+                                    Image.asset('assets/images/EditSquare.png'),
+                              ),
+                            )
+                          ],
+                        ),
+                        width: 200,
                       ),
-                      width: 200,
+                      onTap: () {
+                        controller.getImage();
+                      },
                     ),
                     SizedBox(
                       height: 24,
