@@ -1,12 +1,12 @@
 import 'dart:convert';
-
+import 'dart:io';
 import 'package:easy_im/models/g_response.dart';
 import 'package:get/get.dart';
 import '../routers/app_routes.dart';
 import 'graph_ql_client.dart';
 import 'package:crypto/crypto.dart';
 
-const SERVER_API_URL = "http://127.0.0.1:8083/graphql";
+const SERVER_API_URL = "http://127.0.0.1:8083";
 
 class BaseProvider extends GetConnect implements IGraphQLClient {
   @override
@@ -40,7 +40,7 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
   @override
   Future<GResponse?> gMutate(
       {required String graphSQL, Map<String, dynamic>? variables}) async {
-    Response resp = await post("", {
+    Response resp = await post("/graphql", {
       "query": graphSQL,
       "variables": variables,
     });
@@ -60,7 +60,7 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
   @override
   Future<GResponse?> gQuery(
       {required String graphSQL, Map<String, dynamic>? variables}) async {
-    Response resp = await post("", {
+    Response resp = await post("/graphql", {
       "query": graphSQL,
       "variables": variables,
     });
@@ -75,6 +75,20 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
     }
 
     return gResponse;
+  }
+
+  Future<UploadFile?> uploadFile(File file) async {
+    final formData =
+        FormData({'file': MultipartFile(file.path, filename: file.path)});
+    final response = await post('/upload', formData);
+    print('${response.bodyString}');
+    if (response.statusCode == HttpStatus.ok) {
+      return UploadFile.fromJson(response.body);
+    } else {
+      return null;
+      // throw Exception('Failed to upload file');
+    }
+    
   }
 }
 

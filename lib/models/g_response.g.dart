@@ -38,3 +38,14 @@ Map<String, dynamic> _$GErrorItemToJson(GErrorItem instance) =>
       'code': instance.code,
       'message': instance.message,
     };
+
+UploadFile _$UploadFileFromJson(Map<String, dynamic> json) => UploadFile(
+      json['filename'] as String,
+      json['url'] as String,
+    );
+
+Map<String, dynamic> _$UploadFileToJson(UploadFile instance) =>
+    <String, dynamic>{
+      'filename': instance.filename,
+      'url': instance.url,
+    };

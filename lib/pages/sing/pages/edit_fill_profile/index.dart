@@ -242,7 +242,7 @@ class SingEditFillProfilePage
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {controller.sub();},
                     child: Container(
                       height: 55,
                       width: double.infinity,

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:easy_im/common/routers/app_pages.dart';
 import 'package:easy_im/common/routers/app_routes.dart';
 import 'package:easy_im/pages/sing/pages/sing_otp/provider.dart';
 import 'package:easy_im/widgets/dialog.dart';

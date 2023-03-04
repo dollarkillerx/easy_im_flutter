@@ -76,6 +76,19 @@ class GErrorItem {
   Map<String, dynamic> toJson() => _$GErrorItemToJson(this);
 }
 
+@JsonSerializable()
+class UploadFile {
+  String filename;
+  String url;
+
+  UploadFile(this.filename, this.url);
+
+  factory UploadFile.fromJson(Map<String, dynamic> json) =>
+      _$UploadFileFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UploadFileToJson(this);
+}
+
 /**
     @JsonSerializable()
     class GError {
