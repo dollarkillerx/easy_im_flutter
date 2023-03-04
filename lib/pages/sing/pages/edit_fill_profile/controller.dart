@@ -1,10 +1,10 @@
 import 'dart:io';
-
 import 'package:easy_im/models/g_response.dart';
 import 'package:easy_im/pages/sing/pages/edit_fill_profile/provider.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../../common/library/img.dart';
 
 class SingEditFillProfilePageController extends GetxController {
   var dataBirth = TextEditingController();
@@ -31,11 +31,14 @@ class SingEditFillProfilePageController extends GetxController {
     if (imgPath.value == '') {
       return;
     }
+
     File file = File(imgPath.value);
-    UploadFile? up = await provider.uploadFile(file);
+    final compressedFile = await compressImage(file, 80);
+    UploadFile? up = await provider.uploadFile(compressedFile);
     if (up != null) {
       print(up.url);
     }
+    await file.delete();
     print('rc');
   }
 }
