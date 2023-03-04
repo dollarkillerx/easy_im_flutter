@@ -19,3 +19,19 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'phone': instance.phone,
       'online_time': instance.online_time,
     };
+
+SendSMS _$SendSMSFromJson(Map<String, dynamic> json) => SendSMS(
+      json['smsId'] as String,
+    );
+
+Map<String, dynamic> _$SendSMSToJson(SendSMS instance) => <String, dynamic>{
+      'smsId': instance.smsId,
+    };
+
+CheckSMS _$CheckSMSFromJson(Map<String, dynamic> json) => CheckSMS(
+      json['ok'] as bool,
+    );
+
+Map<String, dynamic> _$CheckSMSToJson(CheckSMS instance) => <String, dynamic>{
+      'ok': instance.ok,
+    };

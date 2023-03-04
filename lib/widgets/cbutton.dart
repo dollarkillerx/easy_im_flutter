@@ -4,12 +4,13 @@ class CButton extends StatelessWidget {
   final String text;
   final double height;
   final Color color;
+  final VoidCallback? onPressed;
 
   const CButton({
     super.key,
     required this.text,
     required this.height,
-    required this.color,
+    required this.color, this.onPressed,
   });
 
   @override
@@ -17,7 +18,7 @@ class CButton extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: Container(
           height: height,
           width: double.infinity,

@@ -50,7 +50,7 @@ class SingOTPPage extends GetView<SingOTPPageController> {
                       ),
                       OptForm(
                         onSave: (val) {
-                          print(val);
+                          controller.code = val;
                         },
                         length: 4,
                       ),
@@ -60,7 +60,10 @@ class SingOTPPage extends GetView<SingOTPPageController> {
                       Obx(() {
                         if (controller.duration.value == 0) {
                           return ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.sendSMS();
+                              controller.countdown();
+                            },
                             child: Container(
                               height: 55,
                               width: 100,
@@ -110,6 +113,9 @@ class SingOTPPage extends GetView<SingOTPPageController> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: CButton(
+                  onPressed: () {
+                    controller.checkSMS();
+                  },
                   text: 'Verify',
                   height: 55,
                   color: Color(0xff3062C8),
@@ -122,4 +128,3 @@ class SingOTPPage extends GetView<SingOTPPageController> {
     });
   }
 }
-

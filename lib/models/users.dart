@@ -17,3 +17,29 @@ class User {
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }
+
+@JsonSerializable()
+class SendSMS {
+  String smsId;
+
+  SendSMS(this.smsId);
+
+  // 固定格式，不同的类使用不同的mixin即可
+  // 这里声明一个工厂构造方法
+  factory SendSMS.fromJson(Map<String, dynamic> json) => _$SendSMSFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SendSMSToJson(this);
+}
+
+@JsonSerializable()
+class CheckSMS {
+  bool ok;
+
+  CheckSMS(this.ok);
+
+  // 固定格式，不同的类使用不同的mixin即可
+  // 这里声明一个工厂构造方法
+  factory CheckSMS.fromJson(Map<String, dynamic> json) => _$CheckSMSFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CheckSMSToJson(this);
+}
