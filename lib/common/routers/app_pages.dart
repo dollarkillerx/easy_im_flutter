@@ -13,9 +13,9 @@ import '../../pages/home/index.dart';
 import 'app_routes.dart';
 
 class AppPages {
-  // static const InitRoute = AppRoutes.EditFillProfile;
-  static String InitRoute =
-      AppRoutes.pathJoin([AppRoutes.Sing, AppRoutes.EditFillProfile]);
+  static const InitRoute = AppRoutes.Home;
+  // static String InitRoute =
+  //     AppRoutes.pathJoin([AppRoutes.Sing, AppRoutes.EditFillProfile]);
 
   static final routers = [
     // 主页导航

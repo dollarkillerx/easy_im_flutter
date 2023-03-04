@@ -1,6 +1,7 @@
 import 'package:easy_im/widgets/opt_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../widgets/cbutton.dart';
 import 'controller.dart';
 
 class SingOTPPage extends GetView<SingOTPPageController> {
@@ -108,26 +109,10 @@ class SingOTPPage extends GetView<SingOTPPageController> {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Container(
-                      height: 55,
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Verify',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff3062C8),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
+                child: CButton(
+                  text: 'Verify',
+                  height: 55,
+                  color: Color(0xff3062C8),
                 ),
               )
             ],
@@ -137,3 +122,4 @@ class SingOTPPage extends GetView<SingOTPPageController> {
     });
   }
 }
+
