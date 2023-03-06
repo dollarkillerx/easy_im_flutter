@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../common/library/img.dart';
 import '../../../../common/library/jwt.dart';
+import '../../../../common/routers/app_routes.dart';
 import '../../../../widgets/dialog.dart';
 
 class SingEditFillProfilePageController extends GetxController {
@@ -72,11 +73,11 @@ class SingEditFillProfilePageController extends GetxController {
     }
     if (gp.GetData() != null) {
       AuthPayload authPayload = AuthPayload.fromJson(gp.GetData()!);
-      print(authPayload.accessTokenString);
-      print(authPayload.userID);
 
       await LocalStorage.setJWT(
           authPayload.accessTokenString, authPayload.userID);
+
+      Get.offAllNamed(AppRoutes.Home);
     }
   }
 }

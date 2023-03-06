@@ -10,7 +10,8 @@ class CButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.height,
-    required this.color, this.onPressed,
+    required this.color,
+    this.onPressed,
   });
 
   @override

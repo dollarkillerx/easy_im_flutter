@@ -47,13 +47,11 @@ class Welcome extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              GestureDetector(
-                onTap: onTap,
-                child: CButton(
-                  text: 'Start New Chat',
-                  height: 55,
-                  color: ImColors.bgColor,
-                ),
+              CButton(
+                text: 'Start New Chat',
+                height: 55,
+                color: ImColors.bgColor,
+                onPressed: onTap,
               )
             ],
           ))

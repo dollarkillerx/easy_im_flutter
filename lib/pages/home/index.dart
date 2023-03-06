@@ -26,7 +26,9 @@ class HomePage extends GetView<HomeController> {
                     child: IndexedStack(
                   index: controller.actionIndex.value,
                   children: [
-                    Welcome(),
+                    Welcome(
+                      onTap: () {},
+                    ),
                     Container(
                       child: Center(
                         child: Text('Users'),

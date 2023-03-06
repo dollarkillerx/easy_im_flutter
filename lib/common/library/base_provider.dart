@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:easy_im/common/library/jwt.dart';
 import 'package:easy_im/models/g_response.dart';
 import 'package:get/get.dart';
 import '../routers/app_routes.dart';
@@ -17,7 +18,8 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
 
     // 请求拦截
     httpClient.addRequestModifier<void>((request) async {
-      request.headers['Authorization'] = 'Bearer myToken';
+      String? jwt = await LocalStorage.getJWT();
+      request.headers['Authorization'] = jwt ?? '';
       String skey = "s" + "a" + "l" + "t";
       request.headers[skey] = md5
           .convert(utf8.encode(
@@ -87,7 +89,6 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
       return null;
       // throw Exception('Failed to upload file');
     }
-    
   }
 }
 

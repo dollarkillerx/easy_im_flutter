@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:easy_im/common/routers/app_routes.dart';
 import 'package:easy_im/pages/sing/pages/sing_otp/provider.dart';
 import 'package:easy_im/widgets/dialog.dart';
 import 'package:get/get.dart';
+import '../../../../common/library/jwt.dart';
 import '../../../../models/g_response.dart';
 import '../../../../models/users.dart';
 
@@ -66,6 +65,27 @@ class SingOTPPageController extends GetxController {
   }
 
   checkSMS() async {
+    if (!isSingUp) {
+      // login
+      GResponse gp = await provider.login(smsId, code);
+      if (gp.GetError() != null) {
+        Get.dialog(
+          DialogWidget('Error', gp.GetError()!.message),
+          barrierDismissible: false,
+        );
+      }
+
+      if (gp.GetData() != null) {
+        AuthPayload authPayload = AuthPayload.fromJson(gp.GetData()!);
+
+        await LocalStorage.setJWT(
+            authPayload.accessTokenString, authPayload.userID);
+
+        Get.offAllNamed(AppRoutes.Home);
+      }
+      return;
+    }
+
     GResponse gp = await provider.checkSMS(smsId, code);
     if (gp.GetError() != null) {
       Get.dialog(
@@ -76,7 +96,6 @@ class SingOTPPageController extends GetxController {
 
     if (gp.GetData() != null) {
       CheckSMS checkSMS = CheckSMS.fromJson(gp.GetData()!);
-      print(jsonEncode(checkSMS));
       if (!checkSMS.ok) {
         Get.dialog(
           DialogWidget('Error', 'Wrong verification code'),
