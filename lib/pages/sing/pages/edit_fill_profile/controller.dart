@@ -1,13 +1,23 @@
 import 'dart:io';
 import 'package:easy_im/models/g_response.dart';
+import 'package:easy_im/models/users.dart';
 import 'package:easy_im/pages/sing/pages/edit_fill_profile/provider.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../common/library/img.dart';
+import '../../../../common/library/jwt.dart';
+import '../../../../widgets/dialog.dart';
 
 class SingEditFillProfilePageController extends GetxController {
+  final String smsId = Get.arguments["smsId"];
+  final String smsCode = Get.arguments["smsCode"];
+
   var dataBirth = TextEditingController();
+  var fullName = TextEditingController();
+  var nickName = TextEditingController();
+  var email = TextEditingController();
+  var about = TextEditingController();
   var imgPath = "".obs;
 
   SingEditFillProfilePageProvider provider = Get.find();
@@ -27,18 +37,46 @@ class SingEditFillProfilePageController extends GetxController {
     }
   }
 
-  sub() async {
+  registration() async {
     if (imgPath.value == '') {
       return;
     }
 
     File file = File(imgPath.value);
     final compressedFile = await compressImage(file, 80);
-    UploadFile? up = await provider.uploadFile(compressedFile);
-    if (up != null) {
-      print(up.url);
+    UploadFile? upfile = await provider.uploadFile(compressedFile);
+    print(upfile);
+    if (upfile == null) {
+      Get.snackbar("Error", "Service area upgrade");
+      return;
+      // print(upfile.url);
+      // print(upfile.filename);
     }
     await file.delete();
-    print('rc');
+
+    GResponse gp = await provider.userRegistration(
+      fullName.text,
+      nickName.text,
+      dataBirth.text,
+      email.text,
+      about.text,
+      upfile.filename,
+      smsId,
+      smsCode,
+    );
+    if (gp.GetError() != null) {
+      Get.dialog(
+        DialogWidget('Error', gp.GetError()!.message),
+        barrierDismissible: false,
+      );
+    }
+    if (gp.GetData() != null) {
+      AuthPayload authPayload = AuthPayload.fromJson(gp.GetData()!);
+      print(authPayload.accessTokenString);
+      print(authPayload.userID);
+
+      await LocalStorage.setJWT(
+          authPayload.accessTokenString, authPayload.userID);
+    }
   }
 }

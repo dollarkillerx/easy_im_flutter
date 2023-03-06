@@ -35,3 +35,14 @@ CheckSMS _$CheckSMSFromJson(Map<String, dynamic> json) => CheckSMS(
 Map<String, dynamic> _$CheckSMSToJson(CheckSMS instance) => <String, dynamic>{
       'ok': instance.ok,
     };
+
+AuthPayload _$AuthPayloadFromJson(Map<String, dynamic> json) => AuthPayload(
+      json['accessTokenString'] as String,
+      json['userID'] as String,
+    );
+
+Map<String, dynamic> _$AuthPayloadToJson(AuthPayload instance) =>
+    <String, dynamic>{
+      'accessTokenString': instance.accessTokenString,
+      'userID': instance.userID,
+    };

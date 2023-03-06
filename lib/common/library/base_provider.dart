@@ -81,8 +81,7 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
     final formData =
         FormData({'file': MultipartFile(file.path, filename: file.path)});
     final response = await post('/upload', formData);
-    print('${response.bodyString}');
-    if (response.statusCode == HttpStatus.ok) {
+    if (response.statusCode == HttpStatus.created) {
       return UploadFile.fromJson(response.body);
     } else {
       return null;

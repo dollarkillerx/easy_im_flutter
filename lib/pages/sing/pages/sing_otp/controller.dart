@@ -84,7 +84,11 @@ class SingOTPPageController extends GetxController {
         );
       } else {
         Get.offAllNamed(
-            AppRoutes.pathJoin([AppRoutes.Sing, AppRoutes.EditFillProfile]));
+            AppRoutes.pathJoin([AppRoutes.Sing, AppRoutes.EditFillProfile]),
+            arguments: {
+              'smsId': smsId,
+              'smsCode': code,
+            });
       }
     }
   }

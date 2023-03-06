@@ -14,15 +14,16 @@ class SingEditFillProfilePage
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(
-              Icons.arrow_back_ios_outlined,
-              color: Colors.black,
-            ),
-          ),
+          leading: Container(),
+          // leading: IconButton(
+          //   onPressed: () {
+          //     Get.back();
+          //   },
+          //   icon: Icon(
+          //     Icons.arrow_back_ios_outlined,
+          //     color: Colors.black,
+          //   ),
+          // ),
           title: Text(
             "Fill Your Profile",
             style: TextStyle(color: Colors.black),
@@ -242,7 +243,9 @@ class SingEditFillProfilePage
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: ElevatedButton(
-                    onPressed: () {controller.sub();},
+                    onPressed: () {
+                      controller.registration();
+                    },
                     child: Container(
                       height: 55,
                       width: double.infinity,
