@@ -58,3 +58,23 @@ class AuthPayload {
 
   Map<String, dynamic> toJson() => _$AuthPayloadToJson(this);
 }
+
+@JsonSerializable()
+class UserInfo {
+  String accountId;
+  String account;
+  String fullName;
+  String nickName;
+  String birthday;
+  String email;
+  String about;
+  String avatar;
+
+  UserInfo(this.accountId, this.account, this.fullName, this.nickName,
+      this.birthday, this.email, this.about, this.avatar);
+
+  factory UserInfo.fromJson(Map<String, dynamic> json) =>
+      _$UserInfoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserInfoToJson(this);
+}

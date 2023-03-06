@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:easy_im/common/library/jwt.dart';
+import 'package:easy_im/common/library/local_storage.dart';
 import 'package:easy_im/models/g_response.dart';
 import 'package:get/get.dart';
+import '../../models/users.dart';
 import '../routers/app_routes.dart';
 import 'graph_ql_client.dart';
 import 'package:crypto/crypto.dart';
@@ -32,6 +33,7 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
     // 响应拦截
     httpClient.addResponseModifier((request, response) {
       if (response.status.code! == 401) {
+        LocalStorage.delJWT();
         Get.toNamed(AppRoutes.NotFound);
       }
 
@@ -90,7 +92,36 @@ class BaseProvider extends GetConnect implements IGraphQLClient {
       // throw Exception('Failed to upload file');
     }
   }
+
+  Future<UserInfo?> userInfo() async {
+    GResponse? gResponse = await gQuery(graphSQL: userInfoSQL);
+    if (gResponse == null) {
+      return null;
+    }
+
+    if (gResponse.GetError() != null) {
+      return null;
+    }
+
+    UserInfo ui = UserInfo.fromJson(gResponse.GetData()!);
+    return ui;
+  }
 }
+
+var userInfoSQL = '''
+query user {
+  user {
+    accountId
+    account
+    fullName
+    nickName
+    birthday
+    email
+    about
+    avatar
+  }
+}
+''';
 
 /**
     mutation chat($msg: String!) {

@@ -46,3 +46,25 @@ Map<String, dynamic> _$AuthPayloadToJson(AuthPayload instance) =>
       'accessTokenString': instance.accessTokenString,
       'userID': instance.userID,
     };
+
+UserInfo _$UserInfoFromJson(Map<String, dynamic> json) => UserInfo(
+      json['accountId'] as String,
+      json['account'] as String,
+      json['fullName'] as String,
+      json['nickName'] as String,
+      json['birthday'] as String,
+      json['email'] as String,
+      json['about'] as String,
+      json['avatar'] as String,
+    );
+
+Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
+      'accountId': instance.accountId,
+      'account': instance.account,
+      'fullName': instance.fullName,
+      'nickName': instance.nickName,
+      'birthday': instance.birthday,
+      'email': instance.email,
+      'about': instance.about,
+      'avatar': instance.avatar,
+    };

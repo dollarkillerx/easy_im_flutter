@@ -1,5 +1,6 @@
 import 'package:easy_im/constants/colors.dart';
-import 'package:easy_im/pages/home/pages/welcome.dart';
+import 'package:easy_im/pages/home/pages/contacts/index.dart';
+import 'package:easy_im/pages/home/pages/welcome/welcome.dart';
 import 'package:easy_im/pages/home/widgets/headers.dart';
 import 'package:easy_im/pages/home/widgets/menu_button.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class HomePage extends GetView<HomeController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     buildMenuButton('Chats', 0, controller.actionIndex),
-                    buildMenuButton('Users', 1, controller.actionIndex),
+                    buildMenuButton('Contacts', 1, controller.actionIndex),
                   ],
                 )),
             Obx(() => Expanded(
@@ -29,12 +30,7 @@ class HomePage extends GetView<HomeController> {
                     Welcome(
                       onTap: () {},
                     ),
-                    Container(
-                      child: Center(
-                        child: Text('Users'),
-                      ),
-                      color: Colors.white,
-                    )
+                    ContactsPage(),
                   ],
                 )))
           ],

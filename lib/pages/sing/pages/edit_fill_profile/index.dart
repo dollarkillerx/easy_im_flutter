@@ -83,6 +83,7 @@ class SingEditFillProfilePage
                     ),
                     TextFormField(
                       cursorColor: Colors.grey,
+                      controller: controller.fullName,
                       decoration: InputDecoration(
                         labelText: 'Full Name',
                         filled: true,
@@ -111,6 +112,7 @@ class SingEditFillProfilePage
                     ),
                     TextFormField(
                       cursorColor: Colors.grey,
+                      controller: controller.nickName,
                       decoration: InputDecoration(
                         labelText: 'Nickname',
                         filled: true,
@@ -182,6 +184,7 @@ class SingEditFillProfilePage
                     ),
                     TextFormField(
                       cursorColor: Colors.grey,
+                      controller: controller.email,
                       decoration: InputDecoration(
                           labelText: 'Email',
                           filled: true,
@@ -212,6 +215,7 @@ class SingEditFillProfilePage
                     ),
                     TextFormField(
                       cursorColor: Colors.grey,
+                      controller: controller.about,
                       decoration: InputDecoration(
                         labelText: 'About',
                         filled: true,

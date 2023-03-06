@@ -12,7 +12,7 @@ abstract class Storage {
 
 class StorageService implements Storage {
   static final StorageService _instance = StorageService._internal();
-  final _box = GetStorage('easy_im');
+  final _box = GetStorage();
 
   factory StorageService() {
     return _instance;

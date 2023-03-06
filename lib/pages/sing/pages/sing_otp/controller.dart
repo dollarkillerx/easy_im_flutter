@@ -2,7 +2,7 @@ import 'package:easy_im/common/routers/app_routes.dart';
 import 'package:easy_im/pages/sing/pages/sing_otp/provider.dart';
 import 'package:easy_im/widgets/dialog.dart';
 import 'package:get/get.dart';
-import '../../../../common/library/jwt.dart';
+import '../../../../common/library/local_storage.dart';
 import '../../../../models/g_response.dart';
 import '../../../../models/users.dart';
 

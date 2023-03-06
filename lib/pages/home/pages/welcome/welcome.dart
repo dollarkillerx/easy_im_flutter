@@ -1,6 +1,6 @@
 import 'package:easy_im/constants/colors.dart';
 import 'package:flutter/material.dart';
-import '../../../widgets/cbutton.dart';
+import '../../../../widgets/cbutton.dart';
 
 class Welcome extends StatelessWidget {
   final GestureTapCallback? onTap;

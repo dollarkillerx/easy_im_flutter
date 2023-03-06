@@ -13,7 +13,7 @@ import '../../pages/home/index.dart';
 import 'app_routes.dart';
 
 class AppPages {
-  static const InitRoute = AppRoutes.Sing;
+  static const InitRoute = AppRoutes.Welcome;
   // static String InitRoute =
   //     AppRoutes.pathJoin([AppRoutes.Sing, AppRoutes.EditFillProfile]);
 

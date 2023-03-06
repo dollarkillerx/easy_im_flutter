@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../common/library/img.dart';
-import '../../../../common/library/jwt.dart';
+import '../../../../common/library/local_storage.dart';
 import '../../../../common/routers/app_routes.dart';
 import '../../../../widgets/dialog.dart';
 
