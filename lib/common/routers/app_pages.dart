@@ -1,4 +1,6 @@
 import 'package:easy_im/components/unknown_route.dart';
+import 'package:easy_im/pages/home/pages/new_contact/binding.dart';
+import 'package:easy_im/pages/home/pages/new_contact/index.dart';
 import 'package:easy_im/pages/sing/binding.dart';
 import 'package:easy_im/pages/sing/index.dart';
 import 'package:easy_im/pages/sing/pages/edit_fill_profile/binding.dart';
@@ -57,6 +59,12 @@ class AppPages {
       name: AppRoutes.Chat,
       page: () => ChatPage(),
       binding: ChatBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.NewContact,
+      page: () => NewContactsPage(),
+      binding: NewContactsBinding(),
     ),
   ];
 

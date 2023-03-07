@@ -2,6 +2,7 @@ import 'package:easy_im/common/routers/app_routes.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../widgets/contacts_item.dart';
 import 'controller.dart';
 
 class ContactsPage extends GetView<ContactsController> {
@@ -47,78 +48,37 @@ class ContactsPage extends GetView<ContactsController> {
                             ],
                           ),
                         ),
-                        Container(
-                          height: 60,
-                          width: 380,
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 24, vertical: 12),
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                child: Icon(Icons.group_add_outlined),
-                                radius: 28,
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                'New Contact',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              )
-                            ],
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.NewContact);
+                          },
+                          child: Container(
+                            height: 60,
+                            width: 380,
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 12),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  child: Icon(Icons.group_add_outlined),
+                                  radius: 28,
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  'New Contact',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         ...controller.friendships!.friendships.map((element) {
-                          return GestureDetector(
-                            onTap: () {
-                              Get.toNamed(AppRoutes.Chat, arguments: {
-                                "friendship": element,
-                              });
-                              print("object");
-                            },
-                            child: Container(
-                              height: 60,
-                              width: 380,
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: 24, vertical: 12),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundImage:
-                                        NetworkImage(element.avatar),
-                                    radius: 28,
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '${element.nickName}',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        height: 4,
-                                      ),
-                                      Text(
-                                        '${element.account}',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xff616161),
-                                          fontSize: 14,
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
+                          return ContactsItem(
+                            element: element,
                           );
                         }),
                       ],

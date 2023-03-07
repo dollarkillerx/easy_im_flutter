@@ -71,7 +71,7 @@ Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
 
 Friendships _$FriendshipsFromJson(Map<String, dynamic> json) => Friendships(
       (json['friendships'] as List<dynamic>)
-          .map((e) => Friendship.fromJson(e as Map<String, dynamic>))
+          .map((e) => UserInfo.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -101,4 +101,15 @@ Map<String, dynamic> _$FriendshipToJson(Friendship instance) =>
       'email': instance.email,
       'about': instance.about,
       'avatar': instance.avatar,
+    };
+
+SearchUsers _$SearchUsersFromJson(Map<String, dynamic> json) => SearchUsers(
+      (json['users'] as List<dynamic>)
+          .map((e) => UserInfo.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$SearchUsersToJson(SearchUsers instance) =>
+    <String, dynamic>{
+      'users': instance.users,
     };

@@ -81,7 +81,7 @@ class UserInfo {
 
 @JsonSerializable()
 class Friendships {
-  List<Friendship> friendships;
+  List<UserInfo> friendships;
 
   Friendships(this.friendships);
 
@@ -109,4 +109,16 @@ class Friendship {
       _$FriendshipFromJson(json);
 
   Map<String, dynamic> toJson() => _$FriendshipToJson(this);
+}
+
+@JsonSerializable()
+class SearchUsers {
+  List<UserInfo> users;
+
+  SearchUsers(this.users);
+
+  factory SearchUsers.fromJson(Map<String, dynamic> json) =>
+      _$SearchUsersFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SearchUsersToJson(this);
 }

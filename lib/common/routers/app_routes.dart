@@ -5,6 +5,7 @@ class AppRoutes {
   static const String SingOTP = '/otp';
   static const String EditFillProfile = '/edit_fill_profile';
   static const String Chat = '/chat';
+  static const String NewContact = '/new_contact';
 
   static const String NotFound = '/unknown';
 
