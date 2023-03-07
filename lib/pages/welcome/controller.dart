@@ -17,8 +17,9 @@ class WelcomeController extends GetxController {
   }
 
   @override
-  void onReady() async {
-    super.onReady();
+  void onInit() async {
+    super.onInit();
+
     String? jwt = LocalStorage.getJWT();
     print(jwt == null);
     if (jwt != null) {
@@ -32,4 +33,5 @@ class WelcomeController extends GetxController {
       Get.offAndToNamed(AppRoutes.Home);
     }
   }
+
 }

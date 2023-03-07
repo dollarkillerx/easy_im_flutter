@@ -8,12 +8,15 @@ import 'package:easy_im/pages/sing/pages/sing_otp/index.dart';
 import 'package:easy_im/pages/welcome/binding.dart';
 import 'package:easy_im/pages/welcome/index.dart';
 import 'package:get/get.dart';
+import '../../pages/chat/binding.dart';
+import '../../pages/chat/index.dart';
 import '../../pages/home/binding.dart';
 import '../../pages/home/index.dart';
 import 'app_routes.dart';
 
 class AppPages {
   static const InitRoute = AppRoutes.Welcome;
+
   // static String InitRoute =
   //     AppRoutes.pathJoin([AppRoutes.Sing, AppRoutes.EditFillProfile]);
 
@@ -49,6 +52,12 @@ class AppPages {
             binding: SingEditFillProfilePageBinding(),
           ),
         ]),
+
+    GetPage(
+      name: AppRoutes.Chat,
+      page: () => ChatPage(),
+      binding: ChatBinding(),
+    ),
   ];
 
   static final unknownRoute = GetPage(

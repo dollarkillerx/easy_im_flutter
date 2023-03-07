@@ -78,3 +78,35 @@ class UserInfo {
 
   Map<String, dynamic> toJson() => _$UserInfoToJson(this);
 }
+
+@JsonSerializable()
+class Friendships {
+  List<Friendship> friendships;
+
+  Friendships(this.friendships);
+
+  factory Friendships.fromJson(Map<String, dynamic> json) =>
+      _$FriendshipsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FriendshipsToJson(this);
+}
+
+@JsonSerializable()
+class Friendship {
+  String accountId;
+  String account;
+  String fullName;
+  String nickName;
+  String birthday;
+  String email;
+  String about;
+  String avatar;
+
+  Friendship(this.accountId, this.account, this.fullName, this.nickName,
+      this.birthday, this.email, this.about, this.avatar);
+
+  factory Friendship.fromJson(Map<String, dynamic> json) =>
+      _$FriendshipFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FriendshipToJson(this);
+}

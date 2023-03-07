@@ -12,9 +12,21 @@ class UnknownRoute extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset('assets/images/Frame.png'),
               Text(
-                "Unknown Route 404",
+                "Not Found",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Text(
+                "Sorry, unknown route",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: 50,

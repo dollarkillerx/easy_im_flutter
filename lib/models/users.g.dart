@@ -68,3 +68,37 @@ Map<String, dynamic> _$UserInfoToJson(UserInfo instance) => <String, dynamic>{
       'about': instance.about,
       'avatar': instance.avatar,
     };
+
+Friendships _$FriendshipsFromJson(Map<String, dynamic> json) => Friendships(
+      (json['friendships'] as List<dynamic>)
+          .map((e) => Friendship.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$FriendshipsToJson(Friendships instance) =>
+    <String, dynamic>{
+      'friendships': instance.friendships,
+    };
+
+Friendship _$FriendshipFromJson(Map<String, dynamic> json) => Friendship(
+      json['accountId'] as String,
+      json['account'] as String,
+      json['fullName'] as String,
+      json['nickName'] as String,
+      json['birthday'] as String,
+      json['email'] as String,
+      json['about'] as String,
+      json['avatar'] as String,
+    );
+
+Map<String, dynamic> _$FriendshipToJson(Friendship instance) =>
+    <String, dynamic>{
+      'accountId': instance.accountId,
+      'account': instance.account,
+      'fullName': instance.fullName,
+      'nickName': instance.nickName,
+      'birthday': instance.birthday,
+      'email': instance.email,
+      'about': instance.about,
+      'avatar': instance.avatar,
+    };

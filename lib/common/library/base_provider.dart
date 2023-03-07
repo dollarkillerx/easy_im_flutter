@@ -8,7 +8,7 @@ import '../routers/app_routes.dart';
 import 'graph_ql_client.dart';
 import 'package:crypto/crypto.dart';
 
-const SERVER_API_URL = "http://127.0.0.1:8083";
+const SERVER_API_URL = "http://192.168.31.66:8083";
 
 class BaseProvider extends GetConnect implements IGraphQLClient {
   @override
