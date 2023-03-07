@@ -79,6 +79,11 @@ class ContactsPage extends GetView<ContactsController> {
                         ...controller.friendships!.friendships.map((element) {
                           return ContactsItem(
                             element: element,
+                            onTap: () {
+                              Get.toNamed(AppRoutes.Chat, arguments: {
+                                "friendship": element,
+                              });
+                            },
                           );
                         }),
                       ],

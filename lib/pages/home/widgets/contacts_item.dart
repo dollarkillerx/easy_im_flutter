@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../common/routers/app_routes.dart';
 import '../../../models/users.dart';
 
 class ContactsItem extends StatelessWidget {
   final UserInfo element;
+  final GestureTapCallback? onTap;
 
   const ContactsItem({
-    super.key, required this.element,
+    super.key, required this.element, this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.toNamed(AppRoutes.Chat, arguments: {
-          "friendship": element,
-        });
-      },
+      onTap: onTap,
       child: Container(
         height: 60,
         width: 380,

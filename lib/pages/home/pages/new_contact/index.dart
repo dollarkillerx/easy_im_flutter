@@ -2,6 +2,7 @@ import 'package:easy_im/constants/colors.dart';
 import 'package:easy_im/pages/home/widgets/contacts_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../common/routers/app_routes.dart';
 import 'controller.dart';
 
 class NewContactsPage extends GetView<NewContactsController> {
@@ -21,6 +22,11 @@ class NewContactsPage extends GetView<NewContactsController> {
                 children: [
                   ...?controller.searchUsers?.users.map((e) => Container(
                         child: ContactsItem(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.Chat, arguments: {
+                              "friendship": e,
+                            });
+                          },
                           element: e,
                         ),
                       )),
