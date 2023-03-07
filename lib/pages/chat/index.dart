@@ -153,10 +153,15 @@ class ChatPage extends GetView<ChatController> {
         children: [
           Row(
             children: [
-              Icon(
-                Icons.arrow_back_outlined,
-                color: Colors.white,
-                size: 28,
+              GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Icon(
+                  Icons.arrow_back_outlined,
+                  color: Colors.white,
+                  size: 28,
+                ),
               ),
               SizedBox(
                 width: 16,
